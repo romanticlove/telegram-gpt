@@ -25,4 +25,4 @@ Simple tg bot that allows to use chat gpt without subscription (through telegram
 * npm i
 * copy **.env.example** file into root directory with **.env** name
 * fill env variables in **.env** file
-* place **development.js** file with config override for model, messages e.t.c (optional)
+* place **development.js** file with config override for model, messages e.t.c (optional). Usefull for local usage.

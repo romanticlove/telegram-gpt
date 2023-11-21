@@ -68,6 +68,8 @@ const onMessage = async (msg) => {
                 return await state.bot.sendMessage(chatId, messagePerStatus[state.status])
             case statuses.WAITING_FOR_PROMPT:
             case statuses.WAITING_FOR_JSON_PROMPT: {
+                const useJSON = state.status === statuses.WAITING_FOR_JSON_PROMPT;
+
                 state.status = statuses.WAITING_GPT_RESPONSE;
                 state.bot.sendMessage(chatId, 'Asking Chat GPT. Come back in few seconds')
                     .catch(console.error)
@@ -84,7 +86,7 @@ const onMessage = async (msg) => {
                         state.bot.sendMessage(chatId, `FAILED. ${err.message}`)
                             .catch(console.error)
                     },
-                    json: state.status === statuses.WAITING_FOR_JSON_PROMPT
+                    json: useJSON
                 })
             }
         }

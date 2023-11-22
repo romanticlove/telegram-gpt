@@ -19,6 +19,7 @@ async function gracefulShutdown() {
     try {
         if(shutdownMessage) {
             await systemMessage(`I'm going to shutdown. See ya`)
+            setTimeout(process.exit, 1500, 0)
         }
     } finally {
         process.exit(0)
